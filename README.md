@@ -14,3 +14,9 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+### My GitHub koi 🐟
+
+<img src="koi/koi.gif" width="256" alt="My koi, grown from my public GitHub activity" />
+
+Powered by [git-koi](https://github.com/yalongwastaken/git-koi). Updated daily from my public GitHub activity.
