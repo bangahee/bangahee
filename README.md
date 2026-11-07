@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="garden-title-maple.svg" width="100%" alt="小さな庭 · bangahee's little garden. Small commits. Steady growth." />
+  <img src="garden-title-header.svg" width="100%" alt="小さな庭 · bangahee's little garden. Small commits. Steady growth." />
   <br />
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="pond-banner.png" />
