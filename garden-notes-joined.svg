@@ -18,7 +18,7 @@
       <stop offset="100%" stop-color="#17443c"/>
     </linearGradient>
   </defs>
-  <rect width="960" height="236" rx="14" fill="url(#pondDepth)"/>
+  <path d="M0 0H960V222A14 14 0 0 1 946 236H14A14 14 0 0 1 0 222Z" fill="url(#pondDepth)"/>
   <rect x="16" y="16" width="457" height="204" rx="10" fill="url(#mossToJade)"/>
   <rect x="487" y="16" width="457" height="204" rx="10" fill="url(#jadeToWater)"/>
   <g font-family="Arial, sans-serif">

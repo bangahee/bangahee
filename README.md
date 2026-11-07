@@ -15,7 +15,7 @@
     </picture>
   </a>
   <br />
-  <picture><source media="(min-width: 1024px)" srcset="garden-notes-desktop.svg" /><img src="garden-notes-gradient.svg" width="100%" alt="Learning by building with Python, JavaScript, Shell and Docker. My koi grows from public GitHub activity and refreshes daily." /></picture>
+  <picture><source media="(min-width: 1024px)" srcset="garden-notes-desktop-joined.svg" /><img src="garden-notes-joined.svg" width="100%" alt="Learning by building with Python, JavaScript, Shell and Docker. My koi grows from public GitHub activity and refreshes daily." /></picture>
   <br />
   <a href="https://github.com/bangahee?tab=repositories"><picture><source media="(min-width: 1024px)" srcset="links/explore-green-desktop.svg" /><img src="links/explore-green.svg" width="30%" alt="🌾 Explore the garden" /></picture></a>
   <img src="links/dot.svg" width="2%" alt="·" />

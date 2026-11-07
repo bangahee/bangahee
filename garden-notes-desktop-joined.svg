@@ -8,7 +8,7 @@
       <stop offset="100%" stop-color="#103c36"/>
     </linearGradient>
   </defs>
-  <rect width="960" height="204" rx="14" fill="url(#pondDepth)"/>
+  <path d="M0 0H960V190A14 14 0 0 1 946 204H14A14 14 0 0 1 0 190Z" fill="url(#pondDepth)"/>
   <path d="M480 24V180" stroke="#b9cc99" stroke-opacity=".18"/>
   <g font-family="Arial, sans-serif">
     <text x="40" y="35" fill="#d0dda9" font-size="11" letter-spacing="2.5">01 / GROWING IDEAS</text>
