@@ -14,7 +14,7 @@
     <img src="koi/pond.gif" width="100%" alt="My activity-driven koi swimming in a lush Japanese pond with lily pads, mossy stones, maple leaves, and moving ripples" />
   </a>
   <br />
-  <img src="garden-notes-sky.svg" width="100%" alt="Learning by building with Python, JavaScript, Shell and Docker. My koi grows from public GitHub activity and refreshes daily." />
+  <img src="garden-notes-clean.svg" width="100%" alt="Learning by building with Python, JavaScript, Shell and Docker. My koi grows from public GitHub activity and refreshes daily." />
   <br />
   <a href="https://github.com/bangahee?tab=repositories"><img src="links/explore-green.svg" width="30%" height="24" alt="🌾 Explore the garden" /></a>
   <img src="links/dot.svg" width="2%" height="24" alt="·" />
