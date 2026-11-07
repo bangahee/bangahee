@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="garden-title.svg?v=7bdb23e" width="100%" alt="小さな庭 · bangahee's little garden. Small commits. Steady growth." />
+  <img src="garden-title.svg?v=maple-jade-1" width="100%" alt="小さな庭 · bangahee's little garden. Small commits. Steady growth." />
   <br />
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="pond-banner.png" />
@@ -17,7 +17,7 @@
     </picture>
   </a>
   <br />
-  <img src="garden-notes-clean.svg" width="100%" alt="Learning by building with Python, JavaScript, Shell and Docker. My koi grows from public GitHub activity and refreshes daily." />
+  <img src="garden-notes-clean.svg?v=maple-jade-1" width="100%" alt="Learning by building with Python, JavaScript, Shell and Docker. My koi grows from public GitHub activity and refreshes daily." />
   <br />
   <a href="https://github.com/bangahee?tab=repositories"><img src="links/explore-green.svg" width="30%" height="24" alt="🌾 Explore the garden" /></a>
   <img src="links/dot.svg" width="2%" height="24" alt="·" />

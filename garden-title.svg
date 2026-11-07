@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="148" viewBox="0 0 960 148" role="img" aria-labelledby="title desc">
   <title id="title">bangahee's little garden</title>
-  <desc id="desc">A morning sky banner. Small commits. Steady growth.</desc>
+  <desc id="desc">A maple-red gradient banner. Small commits. Steady growth.</desc>
   <defs>
-    <linearGradient id="morningSky" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#b0d0e2" />
-      <stop offset="50%" stop-color="#cae0ec" />
-      <stop offset="85%" stop-color="#dfecf2" />
-      <stop offset="100%" stop-color="#e9f2f0" />
+    <linearGradient id="mapleGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#762c30" />
+      <stop offset="50%" stop-color="#93392f" />
+      <stop offset="85%" stop-color="#a14833" />
+      <stop offset="100%" stop-color="#a64b35" />
     </linearGradient>
   </defs>
-  <rect width="960" height="148" rx="14" fill="url(#morningSky)" />
-  <text x="480" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="4" fill="#3d5a6c">小さな庭 · WELCOME TO THE GARDEN</text>
-  <text x="480" y="85" text-anchor="middle" font-family="&#39;Times New Roman&#39;, Georgia, serif" font-size="38" font-weight="500" fill="#142c38">bangahee's little garden</text>
-  <text x="480" y="118" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Arial, sans-serif" font-size="15" letter-spacing="1" fill="#4d6f82">Small commits. Steady growth.</text>
+  <rect width="960" height="148" rx="14" fill="url(#mapleGlow)" />
+  <text x="480" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="4" fill="#ffe5bc">小さな庭 · WELCOME TO THE GARDEN</text>
+  <text x="480" y="85" text-anchor="middle" font-family="&#39;Times New Roman&#39;, Georgia, serif" font-size="38" font-weight="500" fill="#fff4df">bangahee's little garden</text>
+  <text x="480" y="118" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Arial, sans-serif" font-size="15" letter-spacing="1" fill="#ffe9cc">Small commits. Steady growth.</text>
 </svg>

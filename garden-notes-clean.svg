@@ -1,21 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="236" viewBox="0 0 960 236" role="img" aria-labelledby="title desc">
   <title id="title">Field notes from the garden</title>
   <desc id="desc">Learning by building with Python, JavaScript, Shell and Docker. The resident koi changes with public GitHub activity and refreshes daily.</desc>
-  <rect width="960" height="236" rx="14" fill="#143e35"/>
-  <rect x="16" y="16" width="457" height="204" rx="10" fill="#205347"/>
-  <rect x="487" y="16" width="457" height="204" rx="10" fill="#1b4b41"/>
+  <defs>
+    <linearGradient id="pondDepth" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38523a"/>
+      <stop offset="48%" stop-color="#205747"/>
+      <stop offset="100%" stop-color="#103c36"/>
+    </linearGradient>
+    <linearGradient id="mossToJade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3d6045"/>
+      <stop offset="55%" stop-color="#2a5b47"/>
+      <stop offset="100%" stop-color="#1d4d41"/>
+    </linearGradient>
+    <linearGradient id="jadeToWater" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#306752"/>
+      <stop offset="55%" stop-color="#23594a"/>
+      <stop offset="100%" stop-color="#17443c"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="236" rx="14" fill="url(#pondDepth)"/>
+  <rect x="16" y="16" width="457" height="204" rx="10" fill="url(#mossToJade)"/>
+  <rect x="487" y="16" width="457" height="204" rx="10" fill="url(#jadeToWater)"/>
   <g font-family="Arial, sans-serif">
-    <text x="40" y="47" fill="#bbce9b" font-size="12" letter-spacing="3">01 / GROWING IDEAS</text>
+    <text x="40" y="47" fill="#d0dda9" font-size="12" letter-spacing="3">01 / GROWING IDEAS</text>
     <text x="40" y="83" fill="#fff3d6" font-size="25" font-weight="bold">Learning by building.</text>
-    <text x="40" y="113" fill="#d2dec4" font-size="15">Small projects, useful tools, curious detours.</text>
-    <text x="40" y="145" fill="#b9cc99" font-size="12" letter-spacing="2">IN THE GARDEN SHED</text>
+    <text x="40" y="113" fill="#e0e8d2" font-size="15">Small projects, useful tools, curious detours.</text>
+    <text x="40" y="145" fill="#cedda8" font-size="12" letter-spacing="2">IN THE GARDEN SHED</text>
     <g fill="#133e34"><rect x="40" y="161" width="77" height="30" rx="15"/><rect x="125" y="161" width="103" height="30" rx="15"/><rect x="236" y="161" width="65" height="30" rx="15"/><rect x="309" y="161" width="78" height="30" rx="15"/></g>
     <g fill="#e5edcf" font-size="13" text-anchor="middle"><text x="78.5" y="181">Python</text><text x="176.5" y="181">JavaScript</text><text x="268.5" y="181">Shell</text><text x="348" y="181">Docker</text></g>
-    <text x="511" y="47" fill="#bbce9b" font-size="12" letter-spacing="3">02 / LIFE IN THE POND</text>
+    <text x="511" y="47" fill="#d0dda9" font-size="12" letter-spacing="3">02 / LIFE IN THE POND</text>
     <text x="511" y="83" fill="#fff3d6" font-size="25" font-weight="bold">A koi with a little history.</text>
-    <text x="511" y="113" fill="#d2dec4" font-size="15">Languages bring color. Contributions bring growth.</text>
-    <text x="511" y="140" fill="#d2dec4" font-size="15">Streaks leave their marks. The pond keeps moving.</text>
+    <text x="511" y="113" fill="#e0e8d2" font-size="15">Languages bring color. Contributions bring growth.</text>
+    <text x="511" y="140" fill="#e0e8d2" font-size="15">Streaks leave their marks. The pond keeps moving.</text>
     <circle cx="518" cy="177" r="4" fill="#b9ce7f"/>
-    <text x="531" y="182" fill="#b9cc99" font-size="13">Refreshed daily from my public GitHub activity</text>
+    <text x="531" y="182" fill="#cedda8" font-size="13">Refreshed daily from my public GitHub activity</text>
   </g>
 </svg>
