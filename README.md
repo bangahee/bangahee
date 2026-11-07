@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="garden-title.svg" width="100%" alt="小さな庭 · bangahee's little garden. Small commits. Steady growth." />
+  <img src="garden-title.svg?v=7bdb23e" width="100%" alt="小さな庭 · bangahee's little garden. Small commits. Steady growth." />
 </p>
 
 <p align="center">
