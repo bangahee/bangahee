@@ -1,12 +1,12 @@
 <p align="center">
+  <img src="garden-title.svg?v=7bdb23e" width="100%" alt="小さな庭 · bangahee's little garden. Small commits. Steady growth." />
+</p>
+
+<p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="pond-banner.png" />
     <img src="banner/many-koi-maple.gif" width="100%" alt="Six koi gently paddling in the garden pond beneath textured crimson, amber, and copper maple leaves falling and tumbling in the foreground" />
   </picture>
-</p>
-
-<p align="center">
-  <img src="garden-title.svg?v=7bdb23e" width="100%" alt="小さな庭 · bangahee's little garden. Small commits. Steady growth." />
 </p>
 
 <p align="center">
