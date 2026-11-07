@@ -7,7 +7,7 @@
   </picture>
   <br />
   <a href="https://bangahee.github.io/bangahee/">
-    <img src="garden-link.svg?v=compact" width="560" alt="🍁 Enter the little garden · maple leaves and all ↗" />
+    <img src="garden-link-compact.svg" width="560" alt="🍁 Enter the little garden · maple leaves and all ↗" />
   </a>
   <br />
   <a href="https://github.com/bangahee/bangahee/actions/workflows/koi.yml">
