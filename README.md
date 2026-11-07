@@ -15,15 +15,9 @@
   </a>
   <br />
   <img src="garden-notes.svg" width="100%" alt="Learning by building with Python, JavaScript, Shell and Docker. My koi grows from public GitHub activity and refreshes daily." />
-</p>
-
-<p align="center">
-  <a href="https://github.com/bangahee?tab=repositories">🌾 Explore the garden</a>
-  &nbsp; · &nbsp;
-  <a href="https://github.com/bangahee/bangahee/actions/workflows/koi.yml">💧 Pond caretaker</a>
-  &nbsp; · &nbsp;
-  <a href="https://github.com/yalongwastaken/git-koi">🐟 Powered by git-koi</a>
-</p>
-
-<p align="center"><sub>Plant an idea. Give it time. Watch it grow.</sub> 🌿</p>
+  <br />
+  <a href="https://github.com/bangahee?tab=repositories"><img src="links/explore.svg" width="180" height="30" alt="🌾 Explore the garden" /></a>
+  <a href="https://github.com/bangahee/bangahee/actions/workflows/koi.yml"><img src="links/caretaker.svg" width="160" height="30" alt="💧 Pond caretaker" /></a>
+  <a href="https://github.com/yalongwastaken/git-koi"><img src="links/git-koi.svg" width="190" height="30" alt="🐟 Powered by git-koi" /></a>
+  <br /><sub>Plant an idea. Give it time. Watch it grow.</sub> 🌿</p>
 
