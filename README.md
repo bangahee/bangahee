@@ -3,6 +3,10 @@
 </p>
 
 <p align="center">
+  <a href="https://bangahee.github.io/bangahee/">🍁 Enter the little garden · maple leaves and all ↗</a>
+</p>
+
+<p align="center">
   <a href="https://github.com/bangahee/bangahee/actions/workflows/koi.yml">
     <img src="koi/pond.gif" width="100%" alt="My activity-driven koi swimming in a lush Japanese pond with lily pads, mossy stones, maple leaves, and moving ripples" />
   </a>
@@ -10,13 +14,6 @@
 
 <p align="center">
   <img src="garden-notes.svg" width="100%" alt="Learning by building with Python, JavaScript, Shell and Docker. My koi grows from public GitHub activity and refreshes daily." />
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-reduced-motion: reduce)" srcset="maple/maple-still.png" />
-    <img src="maple/maple-breeze.gif" width="100%" alt="Textured crimson, amber, and copper maple leaves drift and tumble in a gentle autumn breeze" />
-  </picture>
 </p>
 
 <p align="center">
