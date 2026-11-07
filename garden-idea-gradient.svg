@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="36" viewBox="0 0 560 36" role="img" aria-labelledby="title desc">
+  <title id="title">Plant an idea. Give it time. Watch it grow.</title>
+  <desc id="desc">Italic garden lettering flowing from maple red through warm moss to pond green, framed by fine horizontal rules.</desc>
+  <defs>
+    <linearGradient id="mapleToPond" gradientUnits="userSpaceOnUse" x1="118" y1="18" x2="442" y2="18">
+      <stop class="maple" offset="0%" stop-color="#a33b30" />
+      <stop class="moss" offset="50%" stop-color="#70603c" />
+      <stop class="pond" offset="100%" stop-color="#276354" />
+    </linearGradient>
+  </defs>
+  <style>
+    .words { fill: url(#mapleToPond); }
+    .rule { fill: none; stroke: url(#mapleToPond); stroke-width: .7; opacity: .5; }
+    @media (prefers-color-scheme: dark) {
+      .maple { stop-color: #e99c84; }
+      .moss { stop-color: #c9bc8b; }
+      .pond { stop-color: #8abda7; }
+    }
+  </style>
+  <path class="rule" d="M72 18H110M450 18H488" />
+  <text class="words" x="280" y="23" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" font-style="italic">Plant an idea. Give it time. Watch it grow.</text>
+</svg>

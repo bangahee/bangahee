@@ -6,9 +6,7 @@
     <img src="banner/many-koi-maple.gif" width="100%" alt="Six koi gently paddling in the garden pond beneath textured crimson, amber, and copper maple leaves falling and tumbling in the foreground" />
   </picture>
   <br />
-  <a href="https://bangahee.github.io/bangahee/">
-    <img src="garden-link-compact.svg" width="560" alt="🍁 Enter the little garden · maple leaves and all ↗" />
-  </a>
+  <img src="garden-idea-gradient.svg" width="520" height="34" alt="Plant an idea. Give it time. Watch it grow." />
   <br />
   <a href="https://github.com/bangahee/bangahee/actions/workflows/koi.yml">
     <picture>
@@ -25,6 +23,8 @@
   <img src="links/dot.svg" width="2%" height="24" alt="·" />
   <a href="https://github.com/yalongwastaken/git-koi"><img src="links/git-koi-green.svg" width="32%" height="24" alt="🐟 Powered by git-koi" /></a>
   <br />
-  <img src="garden-closing-clean.svg" width="520" height="34" alt="Plant an idea. Give it time. Watch it grow." />
+  <a href="https://bangahee.github.io/bangahee/">
+    <img src="garden-link-compact.svg" width="560" alt="🍁 Enter the little garden · maple leaves and all ↗" />
+  </a>
 </p>
 
