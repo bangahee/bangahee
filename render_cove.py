@@ -4,12 +4,13 @@ Run from the repository root after git-koi generates koi/koi.gif.
 The activity sprite and its frame timing are preserved. Water, waterfall,
 caustics, plants and ripples are animated separately underneath it.
 """
-from math import pi, sin, tau
+from math import ceil, pi, sin, tau
 from pathlib import Path
 import shutil
 
 import numpy as np
 from PIL import Image, ImageChops, ImageDraw, ImageFilter, ImageSequence
+from scripts import render_maple as maple
 
 ROOT = Path(__file__).resolve().parent
 SIZE = (864, 432)
@@ -50,6 +51,16 @@ class Cove:
         luma = (self.pixels[:,:,0]*.2126 + self.pixels[:,:,1]*.7152
                 + self.pixels[:,:,2]*.0722)
         self.caustics = self.water*np.clip((luma-100)/75, 0, 1)
+        # Share the top banner's textured maple sprites and wind/tumble motion.
+        maple.WIDTH, maple.HEIGHT, maple.SECONDS = WIDTH, HEIGHT, 1.0
+        self.maple_sprites = maple.load_sprites()
+        self.maple_leaves = maple.make_leaves(26, HEIGHT)
+        for leaf in self.maple_leaves:
+            leaf['size'] *= .83
+
+    def foreground(self, scene, t):
+        return maple.render(t % 1, self.maple_leaves, self.maple_sprites,
+                            scene.convert('RGBA'), HEIGHT).convert('RGB')
 
     def render(self, t):
         t %= 1
@@ -128,12 +139,19 @@ def render_pond():
                   for frame in ImageSequence.Iterator(source)]
     if not frames:
         raise ValueError('The source koi animation is empty')
+    native_duration = sum(ms for _,ms in frames)
+    # Keep the native fish and water speed, while giving the falling leaves a
+    # slower full loop. Repeat complete koi cycles rather than stretching them.
+    frames *= max(1,ceil(10000/native_duration))
     assert not ImageChops.difference(cove.render(0).convert('RGB'),
                                     cove.render(1).convert('RGB')).getbbox(), \
         'The cove animation must close seamlessly'
     assert ImageChops.difference(cove.render(0).convert('RGB'),
                                 cove.render(.25).convert('RGB')).getbbox(), \
         'The cove background must animate independently of the koi'
+    assert not ImageChops.difference(cove.foreground(cove.base,0),
+                                    cove.foreground(cove.base,1)).getbbox(), \
+        'The foreground maple loop must close seamlessly'
 
     samples = Image.new('RGB',(512,512),'#18685b')
     for index,(frame,_) in enumerate(frames[::max(1,len(frames)//16)][:16]):
@@ -155,7 +173,8 @@ def render_pond():
     time_ms = 0
     for index,(fish,ms) in enumerate(frames):
         t = time_ms/duration
-        scene = koi_scene(cove,fish,source_size,t)
+        scene = koi_scene(cove,fish,source_size,time_ms/native_duration)
+        scene = cove.foreground(scene,t)
         frame = scene.quantize(palette=palette,dither=Image.Dither.NONE)
         frame = frame.point([*range(255),dark])
         full_frame = frame.copy()
@@ -173,7 +192,7 @@ def render_pond():
             review_frames[index] = full_frame.convert('RGB')
         time_ms += ms
 
-    output = ROOT/'koi/private-pond.gif'
+    output = ROOT/'koi/private-pond-maple.gif'
     output.parent.mkdir(exist_ok=True)
     temporary = output.with_suffix('.tmp.gif')
     encoded[0].save(temporary,save_all=True,append_images=encoded[1:],
@@ -195,6 +214,7 @@ def render_pond():
     temporary.replace(output)
     # Keep existing consumers of the original pond URL up to date as well.
     shutil.copyfile(output,ROOT/'koi/pond.gif')
+    shutil.copyfile(output,ROOT/'koi/private-pond.gif')
     review[0].save(ROOT/'koi/private-pond-still.png')
     contact = Image.new('RGB',(WIDTH,HEIGHT*len(review)))
     for n,scene in enumerate(review):

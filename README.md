@@ -13,7 +13,7 @@
   <a href="https://github.com/bangahee/bangahee/actions/workflows/koi.yml">
     <picture>
       <source media="(prefers-reduced-motion: reduce)" srcset="koi/private-pond-still.png" />
-      <img src="koi/private-pond.gif" width="100%" alt="My activity-driven koi in its own sheltered iris cove, with a flowing stream inlet, shimmering water, a wooden footbridge, and gently swaying plants" />
+      <img src="koi/private-pond-maple.gif" width="100%" alt="My activity-driven koi in its own sheltered iris cove, with a flowing stream inlet, shimmering water, a wooden footbridge, gently swaying plants, and textured maple leaves drifting and tumbling in the foreground" />
     </picture>
   </a>
   <br />

@@ -10,6 +10,8 @@ on:
     paths:
       - .github/workflows/koi.yml
       - render_cove.py
+      - scripts/render_maple.py
+      - maple/leaves-atlas.png
       - requirements-pond.txt
       - pond-cove-background.png
 
@@ -37,7 +39,7 @@ jobs:
       - name: Commit the koi and cove if they changed
         shell: bash
         run: |
-          git add koi/koi.gif koi/pond.gif koi/private-pond.gif koi/private-pond-still.png
+          git add koi/koi.gif koi/pond.gif koi/private-pond.gif koi/private-pond-maple.gif koi/private-pond-still.png
           if git diff --cached --quiet; then
             echo "The pond is unchanged; nothing to commit."
             exit 0
