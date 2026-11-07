@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="pond-banner.png" />
-    <img src="banner/many-koi-calm.gif" width="100%" alt="Six koi resting and gently paddling at their own pace in the original garden arrangement, with flowing pond water and waterfall, expanding ripples, swaying foliage, and drifting maple leaves" />
+    <img src="banner/many-koi-maple.gif" width="100%" alt="Six koi gently paddling in the garden pond beneath textured crimson, amber, and copper maple leaves falling and tumbling in the foreground" />
   </picture>
 </p>
 

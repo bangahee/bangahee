@@ -1,6 +1,6 @@
 # Many-koi garden banner
 
-The original `pond-banner.png` is preserved. The README displays `many-koi-calm.gif`
+The original `pond-banner.png` is preserved. The README displays `many-koi-maple.gif`
 above the garden sign, with the original still image as a reduced-motion fallback.
 
 This twelve-second loop preserves each koi's original position, size, and
@@ -35,3 +35,15 @@ Edit target: attached original Japanese koi garden panorama. Create an animation
 ### Edge cleanup
 
 Edit target image 1 is a transparent cutout sheet of six koi. Reference image 2 is the original pond scene, for exact fish colors. Fix ONLY the erroneous bright pure-yellow and pure-red fringe pixels outside the fish silhouettes on image 1. Remove these colored matte/segmentation halos and stray dots to true alpha transparency. Keep all six fish, their positions, sizes, orientations, real red markings, gold scales and original artwork unchanged. The fish should have clean natural dark-gray pixel-art outlines, not neon yellow/red outlines. Preserve the exact full panoramic 3:1 canvas and true transparent background. No added background, no checkerboard, no text. This is a precise edge-cleanup edit for transparent animation sprites.
+
+## Foreground maple breeze
+
+`many-koi-maple.gif` adds six textured red-and-gold maple leaf varieties
+above the complete existing `many-koi-calm.gif` animation. The original
+calm GIF is preserved. The overlay retains all 180 frames, each original
+frame duration, the 864 × 288 canvas, the garden palette, and the twelve-second
+loop. Transparent delta encoding keeps the combined file compact.
+
+After rebuilding the calm banner, run `python scripts/render_banner_maples.py`
+to recreate the foreground leaves. It uses `scripts/render_maple.py` and
+`maple/leaves-atlas.png`; no network access or image-generation call is needed.
