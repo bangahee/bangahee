@@ -99,6 +99,29 @@ class Scene:
         for (sprite, cx, cy), heading in zip(load_fish(), self.original_headings):
             sprite = sprite.rotate(degrees(heading), Image.Resampling.BICUBIC, expand=True)
             self.fish.append((sprite, cx, cy))
+        # Each koi gets its own smooth bouts of paddling and resting. Integrating
+        # these envelopes gives a continuous clock that pauses during idle times
+        # and still closes exactly at the GIF loop boundary.
+        bouts = (
+            ((.10, .17), (.64, .15)),
+            ((.33, .16), (.87, .15)),
+            ((.20, .18), (.74, .14)),
+            ((.52, .24),),
+            ((.02, .11), (.47, .14), (.93, .09)),
+            ((.39, .17), (.78, .14)),
+        )
+        self.stroke_counts = (2, 3, 2, 2, 3, 2)
+        self.motion_tables = []
+        grid = np.linspace(0, 1, 4097)
+        for fish_bouts in bouts:
+            activity = np.zeros_like(grid)
+            for center, half_width in fish_bouts:
+                distance = (grid - center + .5) % 1 - .5
+                inside = np.abs(distance) < half_width
+                activity[inside] += np.cos(pi * distance[inside] / (2 * half_width)) ** 2
+            clock = np.concatenate(([0], np.cumsum((activity[:-1] + activity[1:]) / 2)))
+            clock /= clock[-1]
+            self.motion_tables.append((grid, clock, np.minimum(activity, 1)))
         atlas = Image.open(ROOT / "maple/leaves-atlas.png").convert("RGBA")
         self.leaves = []
         for index in range(4):
@@ -109,13 +132,20 @@ class Scene:
             tile.thumbnail((16, 16), Image.Resampling.LANCZOS)
             self.leaves.append(tile)
 
+    def fish_clock(self, index, t):
+        grid, clock, activity = self.motion_tables[index]
+        position = t % 1
+        return (float(np.interp(position, grid, clock)),
+                float(np.interp(position, grid, activity)))
+
     def fish_pose(self, index, t):
-        """Independent short drifts centered on each original fish position."""
+        """Gentle short drifts with independently timed pauses."""
         _, cx, cy = self.fish[index]
         heading = self.original_headings[index]
-        phase = tau * (t % 1) + index * 1.13
-        along = (16, 14, 10, 16, 14, 12)[index] * sin(phase)
-        across = 3 * sin(2 * phase)
+        clock, _ = self.fish_clock(index, t)
+        phase = tau * clock + index * 1.13
+        along = (12, 11, 8, 12, 11, 10)[index] * sin(phase)
+        across = 2 * sin(2 * phase)
         return (cx + along * cos(heading) - across * sin(heading),
                 cy + along * sin(heading) + across * cos(heading),
                 heading + .045 * sin(phase))
@@ -126,11 +156,11 @@ class Scene:
         yy, xx = np.mgrid[:sprite.height, :sprite.width]
         left, _, right, _ = sprite.getchannel("A").getbbox()
         along_body = np.clip((xx - left) / max(1, right - left), 0, 1)
-        # A clear travelling tail stroke supplies the swimming motion without
-        # moving the fish out of the arrangement the user preferred.
+        # Slow, individually timed strokes relax while the fish is resting.
         tail_weight = (1 - along_body) ** 1.65
-        stroke = tau * (16 * (t % 1)) + index * 1.3
-        bend = 7.5 * tail_weight * np.sin(stroke - along_body * 4)
+        clock, activity = self.fish_clock(index, t)
+        stroke = tau * self.stroke_counts[index] * clock + index * 1.3
+        bend = 5.5 * (.3 + .7 * activity) * tail_weight * np.sin(stroke - along_body * 4)
         sample_y = np.clip(np.rint(yy + bend).astype(int), 0, sprite.height - 1)
         moving = Image.fromarray(pixels[sample_y, xx])
         _, _, heading = self.fish_pose(index, t)
@@ -213,7 +243,7 @@ def main():
         previous = indices
         frames.append(frame)
         durations.append((60, 70, 70)[index % 3])
-    output = ROOT / "banner/many-koi-natural.gif"
+    output = ROOT / "banner/many-koi-calm.gif"
     frames[0].save(output, save_all=True, append_images=frames[1:], duration=durations,
                    loop=0, optimize=False, transparency=255, disposal=1)
     scene.render(0).save(ROOT / "banner/many-koi-still.png")

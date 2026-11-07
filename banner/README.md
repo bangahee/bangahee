@@ -1,11 +1,13 @@
 # Many-koi garden banner
 
-The original `pond-banner.png` is preserved. The README displays `many-koi-natural.gif`
+The original `pond-banner.png` is preserved. The README displays `many-koi-calm.gif`
 above the garden sign, with the original still image as a reduced-motion fallback.
 
 This twelve-second loop preserves each koi's original position, size, and
-orientation. Independent short drifts stay within 17 pixels of the original
-anchors, while travelling body waves and visible tail strokes provide movement.
+orientation. Independent short drifts stay within 13 pixels of the original
+anchors. Each fish has separate, softly eased paddling bouts and rest periods,
+with two or three slow tail strokes per loop instead of sixteen synchronized
+strokes. The body wave relaxes during the pauses.
 The existing water, waterfall, ripples, foliage, lantern light, and leaf animation
 retain their six-second cadence. The camera stays fixed. The activity-driven koi
 pond remains a separate daily-updated scene.
