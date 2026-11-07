@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="36" viewBox="0 0 560 36" role="img" aria-labelledby="title desc">
+  <title id="title">Plant an idea. Give it time. Watch it grow.</title>
+  <desc id="desc">A quiet garden closing in sage-green italic lettering with small botanical sprigs.</desc>
+  <style>
+    .words { fill: #526c55; }
+    .stem { fill: none; stroke: #8ca280; stroke-width: 1; stroke-linecap: round; }
+    .leaf { fill: #8ca280; }
+    .rule { stroke: #b8c6ae; stroke-width: .7; }
+    @media (prefers-color-scheme: dark) {
+      .words { fill: #b9cba6; }
+      .stem { stroke: #769065; }
+      .leaf { fill: #769065; }
+      .rule { stroke: #486044; }
+    }
+  </style>
+  <g id="sprig">
+    <path class="stem" d="M28 27Q40 18 53 10" />
+    <path class="leaf" d="M37 21Q25 20 27 12Q37 12 40 19M43 17Q42 7 50 6Q54 13 43 17M47 14Q55 13 58 19Q50 23 44 18" />
+  </g>
+  <g transform="translate(560 0) scale(-1 1)">
+    <path class="stem" d="M28 27Q40 18 53 10" />
+    <path class="leaf" d="M37 21Q25 20 27 12Q37 12 40 19M43 17Q42 7 50 6Q54 13 43 17M47 14Q55 13 58 19Q50 23 44 18" />
+  </g>
+  <path class="rule" d="M72 18H110M450 18H488" />
+  <text class="words" x="280" y="23" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" font-style="italic">Plant an idea. Give it time. Watch it grow.</text>
+</svg>

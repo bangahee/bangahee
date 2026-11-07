@@ -21,5 +21,7 @@
   <a href="https://github.com/bangahee/bangahee/actions/workflows/koi.yml"><img src="links/caretaker-green.svg" width="27%" height="24" alt="💧 Pond caretaker" /></a>
   <img src="links/dot.svg" width="2%" height="24" alt="·" />
   <a href="https://github.com/yalongwastaken/git-koi"><img src="links/git-koi-green.svg" width="32%" height="24" alt="🐟 Powered by git-koi" /></a>
-  <br /><sub>Plant an idea. Give it time. Watch it grow.</sub> 🌿</p>
+  <br />
+  <img src="garden-closing.svg" width="520" height="34" alt="Plant an idea. Give it time. Watch it grow." />
+</p>
 
