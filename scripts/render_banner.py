@@ -8,7 +8,7 @@ this renderer animates the water, waterfall, foliage, fish and floating leaves.
 """
 
 from collections import deque
-from math import atan2, cos, degrees, pi, sin, tau
+from math import cos, degrees, pi, sin, tau
 from pathlib import Path
 
 import numpy as np
@@ -91,22 +91,14 @@ class Scene:
         warm = ((self.pixels[:, :, 0].astype(int) > self.pixels[:, :, 2].astype(int) + 65)
                 & (self.pixels[:, :, 0] > 150))
         self.lantern *= warm
-        # Register each original pose to face right. Rotation along the route
-        # can then keep its head pointed in the direction it actually travels.
-        original_headings = (.38, .52, .92, 2.78, -2.62, 2.72)
+        # Normalize for body deformation, then restore each original orientation.
+        # Preserve the original size and composition rather than schooling the
+        # fish around a shared track.
+        self.original_headings = (.38, .52, .92, 2.78, -2.62, 2.72)
         self.fish = []
-        self.routes = []
-        for index, ((sprite, cx, cy), heading) in enumerate(zip(load_fish(), original_headings)):
+        for (sprite, cx, cy), heading in zip(load_fish(), self.original_headings):
             sprite = sprite.rotate(degrees(heading), Image.Resampling.BICUBIC, expand=True)
-            sprite = sprite.resize((round(sprite.width * .82), round(sprite.height * .82)),
-                                   Image.Resampling.LANCZOS)
             self.fish.append((sprite, cx, cy))
-            rx = (195, 207, 184, 201, 190, 204)[index]
-            ry = (56, 61, 52, 59, 55, 60)[index]
-            angles = np.linspace(0, tau, 2049)
-            points = np.column_stack((rx * np.cos(angles), ry * np.sin(angles)))
-            distance = np.concatenate(([0], np.cumsum(np.linalg.norm(np.diff(points, axis=0), axis=1))))
-            self.routes.append((rx, ry, angles, distance / distance[-1]))
         atlas = Image.open(ROOT / "maple/leaves-atlas.png").convert("RGBA")
         self.leaves = []
         for index in range(4):
@@ -118,12 +110,15 @@ class Scene:
             self.leaves.append(tile)
 
     def fish_pose(self, index, t):
-        """A full pond circuit, paced by arc length rather than angle."""
-        rx, ry, angles, distance = self.routes[index]
-        progress = ((t % 1) + index / len(self.fish) + .035) % 1
-        angle = float(np.interp(progress, distance, angles))
-        return (470 + rx * cos(angle), 154 + ry * sin(angle),
-                atan2(ry * cos(angle), -rx * sin(angle)))
+        """Independent short drifts centered on each original fish position."""
+        _, cx, cy = self.fish[index]
+        heading = self.original_headings[index]
+        phase = tau * (t % 1) + index * 1.13
+        along = (16, 14, 10, 16, 14, 12)[index] * sin(phase)
+        across = 3 * sin(2 * phase)
+        return (cx + along * cos(heading) - across * sin(heading),
+                cy + along * sin(heading) + across * cos(heading),
+                heading + .045 * sin(phase))
 
     def swimming_sprite(self, index, t):
         sprite = self.fish[index][0]
@@ -131,19 +126,19 @@ class Scene:
         yy, xx = np.mgrid[:sprite.height, :sprite.width]
         left, _, right, _ = sprite.getchannel("A").getbbox()
         along_body = np.clip((xx - left) / max(1, right - left), 0, 1)
-        # The head stays steady while a travelling body wave grows toward the
-        # tail. Six pixels is visible at README size, unlike the previous wobble.
+        # A clear travelling tail stroke supplies the swimming motion without
+        # moving the fish out of the arrangement the user preferred.
         tail_weight = (1 - along_body) ** 1.65
         stroke = tau * (16 * (t % 1)) + index * 1.3
-        bend = 6.0 * tail_weight * np.sin(stroke - along_body * 4)
+        bend = 7.5 * tail_weight * np.sin(stroke - along_body * 4)
         sample_y = np.clip(np.rint(yy + bend).astype(int), 0, sprite.height - 1)
         moving = Image.fromarray(pixels[sample_y, xx])
         _, _, heading = self.fish_pose(index, t)
         return moving.rotate(-degrees(heading), Image.Resampling.BICUBIC, expand=True)
 
     def render(self, t):
-        # Keep the background's existing six-second cadence while the fish
-        # take twelve seconds to complete their much larger swimming paths.
+        # Keep the existing six-second background cadence and twelve-second
+        # independent local fish drifts.
         phase = tau * ((2 * t) % 1)
         dx = self.water * (1.35 * np.sin(self.yy / 10 + phase)
                            + .55 * np.sin(self.xx / 25 - 2 * phase))
@@ -218,7 +213,7 @@ def main():
         previous = indices
         frames.append(frame)
         durations.append((60, 70, 70)[index % 3])
-    output = ROOT / "banner/many-koi-swimming.gif"
+    output = ROOT / "banner/many-koi-natural.gif"
     frames[0].save(output, save_all=True, append_images=frames[1:], duration=durations,
                    loop=0, optimize=False, transparency=255, disposal=1)
     scene.render(0).save(ROOT / "banner/many-koi-still.png")

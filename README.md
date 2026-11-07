@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-reduced-motion: reduce)" srcset="pond-banner.png" />
-    <img src="banner/many-koi-swimming.gif" width="100%" alt="Six koi swimming around the garden pond with visible tail strokes, flowing water and waterfall, expanding ripples, swaying foliage, and drifting maple leaves" />
+    <img src="banner/many-koi-natural.gif" width="100%" alt="Six koi gently swimming in their original garden arrangement, with visible tail strokes, flowing water and waterfall, expanding ripples, swaying foliage, and drifting maple leaves" />
   </picture>
 </p>
 

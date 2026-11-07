@@ -1,14 +1,14 @@
 # Many-koi garden banner
 
-The original `pond-banner.png` is preserved. The README displays `many-koi-swimming.gif`
+The original `pond-banner.png` is preserved. The README displays `many-koi-natural.gif`
 above the garden sign, with the original still image as a reduced-motion fallback.
 
-This twelve-second loop gives all six koi full swimming circuits around the
-pond, head direction matched to travel, and a travelling body wave with visible
-tail strokes. Paths are paced by arc length. The existing water, waterfall,
-ripples, foliage, lantern light, and leaf animation retain their six-second
-cadence. The camera stays fixed. The activity-driven koi pond remains a separate
-daily-updated scene.
+This twelve-second loop preserves each koi's original position, size, and
+orientation. Independent short drifts stay within 17 pixels of the original
+anchors, while travelling body waves and visible tail strokes provide movement.
+The existing water, waterfall, ripples, foliage, lantern light, and leaf animation
+retain their six-second cadence. The camera stays fixed. The activity-driven koi
+pond remains a separate daily-updated scene.
 
 ## Rebuild
 
