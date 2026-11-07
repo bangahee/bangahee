@@ -2,12 +2,16 @@ name: Koi
 
 on:
   schedule:
-    # Just after midnight UTC, so the koi shows the day that just ended.
+    # 09:20 in Korea; the koi reflects the last complete UTC day.
     - cron: "20 0 * * *"
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [.github/workflows/koi.yml]
+    paths:
+      - .github/workflows/koi.yml
+      - render_pond.py
+      - requirements-pond.txt
+      - pond-background.png
 
 permissions:
   contents: write
@@ -17,21 +21,28 @@ concurrency: koi
 jobs:
   koi:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - uses: yalongwastaken/git-koi@v1.0.2
         with:
           body: white
           output-dir: koi
-      - name: Commit the koi if it changed
+      - name: Render the living pond
         shell: bash
         run: |
-          git add koi/koi.gif
+          python3 -m venv "$RUNNER_TEMP/pond-venv"
+          "$RUNNER_TEMP/pond-venv/bin/python" -m pip install --disable-pip-version-check -r requirements-pond.txt
+          "$RUNNER_TEMP/pond-venv/bin/python" render_pond.py
+      - name: Commit the koi and pond if they changed
+        shell: bash
+        run: |
+          git add koi/koi.gif koi/pond.gif
           if git diff --cached --quiet; then
-            echo "The koi is unchanged; nothing to commit."
+            echo "The pond is unchanged; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit --quiet --message "koi: draw the day's koi"
+          git commit --quiet --message "koi: refresh the living pond"
           git push --quiet

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="148" viewBox="0 0 960 148" role="img" aria-labelledby="title desc">
+  <title id="title">bangahee's little garden</title>
+  <desc id="desc">A forest-green garden sign. Small commits. Steady growth.</desc>
+  <rect width="960" height="148" rx="14" fill="#123e35"/>
+  <g fill="none" stroke="#306352" stroke-width="1" opacity=".7">
+    <ellipse cx="60" cy="150" rx="155" ry="90"/><ellipse cx="60" cy="150" rx="125" ry="65"/>
+    <ellipse cx="900" cy="-5" rx="155" ry="90"/><ellipse cx="900" cy="-5" rx="125" ry="65"/>
+  </g>
+  <g fill="#6d9a68" stroke="#8fae75" stroke-width="1.5">
+    <path d="M68 110Q42 68 76 34" fill="none"/>
+    <path d="M63 89Q33 82 39 61Q59 63 63 89M64 73Q81 50 94 55Q91 74 64 73M68 56Q51 44 58 30Q75 38 68 56"/>
+    <path d="M895 110Q920 70 892 36" fill="none"/>
+    <path d="M900 89Q925 84 925 64Q903 67 900 89M900 72Q880 50 866 55Q873 76 900 72M895 55Q913 43 907 29Q887 36 895 55"/>
+  </g>
+  <text x="480" y="33" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" letter-spacing="5" fill="#b9cc99">小さな庭 · WELCOME TO THE GARDEN</text>
+  <text x="480" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="38" fill="#fbf3d9">bangahee's little garden</text>
+  <text x="480" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" letter-spacing="1" fill="#c5d5b2">Small commits. Steady growth.</text>
+  <circle cx="480" cy="133" r="2" fill="#dd946e"/>
+</svg>
