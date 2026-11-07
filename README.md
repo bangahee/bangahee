@@ -16,8 +16,10 @@
   <br />
   <img src="garden-notes.svg" width="100%" alt="Learning by building with Python, JavaScript, Shell and Docker. My koi grows from public GitHub activity and refreshes daily." />
   <br />
-  <a href="https://github.com/bangahee?tab=repositories"><img src="links/explore-green.svg" width="180" height="30" alt="🌾 Explore the garden" /></a>
-  <a href="https://github.com/bangahee/bangahee/actions/workflows/koi.yml"><img src="links/caretaker-green.svg" width="160" height="30" alt="💧 Pond caretaker" /></a>
-  <a href="https://github.com/yalongwastaken/git-koi"><img src="links/git-koi-green.svg" width="190" height="30" alt="🐟 Powered by git-koi" /></a>
+  <a href="https://github.com/bangahee?tab=repositories"><img src="links/explore-green.svg" width="144" height="24" alt="🌾 Explore the garden" /></a>
+  <img src="links/dot.svg" width="12" height="24" alt="·" />
+  <a href="https://github.com/bangahee/bangahee/actions/workflows/koi.yml"><img src="links/caretaker-green.svg" width="128" height="24" alt="💧 Pond caretaker" /></a>
+  <img src="links/dot.svg" width="12" height="24" alt="·" />
+  <a href="https://github.com/yalongwastaken/git-koi"><img src="links/git-koi-green.svg" width="152" height="24" alt="🐟 Powered by git-koi" /></a>
   <br /><sub>Plant an idea. Give it time. Watch it grow.</sub> 🌿</p>
 
