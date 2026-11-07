@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="52" viewBox="0 0 560 52" role="img" aria-labelledby="title desc">
+  <title id="title">Enter the little garden · maple leaves and all ↗</title>
+  <desc id="desc">A maple-orange invitation to visit the little garden.</desc>
+  <style>
+    .invitation { fill: #a9472b; }
+    .underline { stroke: #d8a38a; }
+    @media (prefers-color-scheme: dark) {
+      .invitation { fill: #efb186; }
+      .underline { stroke: #966648; }
+    }
+  </style>
+  <text class="invitation" x="280" y="31" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif" font-size="18" font-weight="500">🍁 Enter the little garden · maple leaves and all ↗</text>
+  <path class="underline" d="M66 39H494" fill="none" stroke-width="1" />
+</svg>

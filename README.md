@@ -10,7 +10,9 @@
 </p>
 
 <p align="center">
-  <a href="https://bangahee.github.io/bangahee/">🍁 Enter the little garden · maple leaves and all ↗</a>
+  <a href="https://bangahee.github.io/bangahee/">
+    <img src="garden-link.svg" width="560" alt="🍁 Enter the little garden · maple leaves and all ↗" />
+  </a>
 </p>
 
 <p align="center">
