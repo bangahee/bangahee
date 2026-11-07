@@ -1,4 +1,4 @@
-"""Animate the original many-koi artwork as a seamless six-second scene.
+"""Animate the original many-koi artwork with swimming fish and a living pond.
 
 Run: python scripts/render_banner.py
 Install: python -m pip install -r requirements-banner.txt
@@ -8,7 +8,7 @@ this renderer animates the water, waterfall, foliage, fish and floating leaves.
 """
 
 from collections import deque
-from math import cos, pi, sin, tau
+from math import atan2, cos, degrees, pi, sin, tau
 from pathlib import Path
 
 import numpy as np
@@ -16,7 +16,7 @@ from PIL import Image, ImageDraw, ImageFilter, ImageChops
 
 ROOT = Path(__file__).resolve().parents[1]
 WIDTH, HEIGHT = 864, 288
-FRAMES, SECONDS = 72, 6
+FRAMES, SECONDS = 180, 12
 
 
 def mask_polygon(points, blur=4):
@@ -91,7 +91,22 @@ class Scene:
         warm = ((self.pixels[:, :, 0].astype(int) > self.pixels[:, :, 2].astype(int) + 65)
                 & (self.pixels[:, :, 0] > 150))
         self.lantern *= warm
-        self.fish = load_fish()
+        # Register each original pose to face right. Rotation along the route
+        # can then keep its head pointed in the direction it actually travels.
+        original_headings = (.38, .52, .92, 2.78, -2.62, 2.72)
+        self.fish = []
+        self.routes = []
+        for index, ((sprite, cx, cy), heading) in enumerate(zip(load_fish(), original_headings)):
+            sprite = sprite.rotate(degrees(heading), Image.Resampling.BICUBIC, expand=True)
+            sprite = sprite.resize((round(sprite.width * .82), round(sprite.height * .82)),
+                                   Image.Resampling.LANCZOS)
+            self.fish.append((sprite, cx, cy))
+            rx = (195, 207, 184, 201, 190, 204)[index]
+            ry = (56, 61, 52, 59, 55, 60)[index]
+            angles = np.linspace(0, tau, 2049)
+            points = np.column_stack((rx * np.cos(angles), ry * np.sin(angles)))
+            distance = np.concatenate(([0], np.cumsum(np.linalg.norm(np.diff(points, axis=0), axis=1))))
+            self.routes.append((rx, ry, angles, distance / distance[-1]))
         atlas = Image.open(ROOT / "maple/leaves-atlas.png").convert("RGBA")
         self.leaves = []
         for index in range(4):
@@ -102,8 +117,34 @@ class Scene:
             tile.thumbnail((16, 16), Image.Resampling.LANCZOS)
             self.leaves.append(tile)
 
+    def fish_pose(self, index, t):
+        """A full pond circuit, paced by arc length rather than angle."""
+        rx, ry, angles, distance = self.routes[index]
+        progress = ((t % 1) + index / len(self.fish) + .035) % 1
+        angle = float(np.interp(progress, distance, angles))
+        return (470 + rx * cos(angle), 154 + ry * sin(angle),
+                atan2(ry * cos(angle), -rx * sin(angle)))
+
+    def swimming_sprite(self, index, t):
+        sprite = self.fish[index][0]
+        pixels = np.asarray(sprite)
+        yy, xx = np.mgrid[:sprite.height, :sprite.width]
+        left, _, right, _ = sprite.getchannel("A").getbbox()
+        along_body = np.clip((xx - left) / max(1, right - left), 0, 1)
+        # The head stays steady while a travelling body wave grows toward the
+        # tail. Six pixels is visible at README size, unlike the previous wobble.
+        tail_weight = (1 - along_body) ** 1.65
+        stroke = tau * (16 * (t % 1)) + index * 1.3
+        bend = 6.0 * tail_weight * np.sin(stroke - along_body * 4)
+        sample_y = np.clip(np.rint(yy + bend).astype(int), 0, sprite.height - 1)
+        moving = Image.fromarray(pixels[sample_y, xx])
+        _, _, heading = self.fish_pose(index, t)
+        return moving.rotate(-degrees(heading), Image.Resampling.BICUBIC, expand=True)
+
     def render(self, t):
-        phase = tau * (t % 1)
+        # Keep the background's existing six-second cadence while the fish
+        # take twelve seconds to complete their much larger swimming paths.
+        phase = tau * ((2 * t) % 1)
         dx = self.water * (1.35 * np.sin(self.yy / 10 + phase)
                            + .55 * np.sin(self.xx / 25 - 2 * phase))
         dy = self.water * .8 * np.sin(self.xx / 18 + phase)
@@ -123,7 +164,7 @@ class Scene:
         draw = ImageDraw.Draw(ripples)
         for rx, ry, scale in ((.9, .30, 1), (.72, .235, .75)):
             for ring in range(3):
-                progress = (t * 4 + ring / 3) % 1
+                progress = (t * 8 + ring / 3) % 1
                 radius = (8 + progress * 29) * scale
                 opacity = round(95 * sin(pi * progress))
                 cx, cy = WIDTH * rx, HEIGHT * ry
@@ -136,16 +177,11 @@ class Scene:
             draw.line((x - 3, y, x + 3, y), fill=(238, 243, 176, alpha))
         scene = Image.alpha_composite(scene, ripples)
 
-        for index, (sprite, cx, cy) in enumerate(self.fish):
-            local = phase + index * 1.3
-            pixels = np.asarray(sprite)
-            yy, xx = np.mgrid[:sprite.height, :sprite.width]
-            bend = 1.5 * np.sin(yy / 11 + 2 * local)
-            sample_x = np.clip(np.rint(xx + bend).astype(int), 0, sprite.width - 1)
-            moving = Image.fromarray(pixels[yy, sample_x])
-            moving = moving.rotate(2.2 * sin(local), Image.Resampling.BICUBIC, expand=True)
-            x = round(cx + 6 * sin(local) - moving.width / 2)
-            y = round(cy + 3 * cos(local) - moving.height / 2)
+        for index in range(len(self.fish)):
+            cx, cy, _ = self.fish_pose(index, t)
+            moving = self.swimming_sprite(index, t)
+            x = round(cx - moving.width / 2)
+            y = round(cy - moving.height / 2)
             shadow = Image.new("RGBA", moving.size, (0, 25, 24, 0))
             shadow.putalpha(moving.getchannel("A").point(lambda a: a // 6))
             scene.alpha_composite(shadow, (x + 2, y + 3))
@@ -181,8 +217,8 @@ def main():
             frame.paste(255, mask=unchanged)
         previous = indices
         frames.append(frame)
-        durations.append((80, 80, 90)[index % 3])
-    output = ROOT / "banner/many-koi.gif"
+        durations.append((60, 70, 70)[index % 3])
+    output = ROOT / "banner/many-koi-swimming.gif"
     frames[0].save(output, save_all=True, append_images=frames[1:], duration=durations,
                    loop=0, optimize=False, transparency=255, disposal=1)
     scene.render(0).save(ROOT / "banner/many-koi-still.png")
