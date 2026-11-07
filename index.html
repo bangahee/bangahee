@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f4ec">
+  <meta name="description" content="bangahee’s little garden. A quiet corner for code, curiosity, koi, and autumn leaves.">
+  <title>小さな庭 · bangahee’s little garden</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='.9em' font-size='54'%3E🍁%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="garden.css">
+  <script src="maple-breeze.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#garden">Skip to the garden</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="#garden" aria-label="Little garden, home"><span class="seal" aria-hidden="true">庭</span><span>bangahee<span class="wordmark-dot">.</span></span></a>
+      <nav aria-label="Main navigation">
+        <a href="#workbench">Workbench</a>
+        <a href="https://github.com/bangahee" class="github-link">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+
+    <main id="garden">
+      <section class="introduction" aria-labelledby="garden-title">
+        <p class="eyebrow"><span class="tiny-leaf" aria-hidden="true">✧</span> A QUIET CORNER OF THE INTERNET</p>
+        <p class="japanese-title" lang="ja">小さな庭</p>
+        <h1 id="garden-title">bangahee’s little <em>garden.</em></h1>
+        <p class="intro-line">Small commits. Steady growth.</p>
+        <p class="intro-detail">A place for code, curiosity, and koi.</p>
+      </section>
+
+      <figure class="pond" aria-labelledby="pond-caption">
+        <picture>
+          <source media="(prefers-reduced-motion: reduce)" srcset="pond-banner.png">
+          <img src="koi/pond.gif" width="1100" height="367" alt="Colorful koi swimming through a clear jade pond, framed by water lilies, mossy stones, and autumn maple branches" fetchpriority="high">
+        </picture>
+        <figcaption id="pond-caption"><span><span class="status-dot" aria-hidden="true"></span> A LITTLE LIFE IN THE POND</span><a href="https://github.com/bangahee/bangahee/actions/workflows/koi.yml">Visit the pond’s caretaker <span aria-hidden="true">↗</span></a></figcaption>
+      </figure>
+
+      <section class="garden-notes" id="workbench" aria-labelledby="notes-title">
+        <div class="section-marker"><span>01</span><span class="marker-line"></span><span>AROUND THE GARDEN</span></div>
+        <div class="notes-grid">
+          <div class="notes-intro">
+            <h2 id="notes-title">A little work.<br>A little <em>growth.</em></h2>
+            <p>I’m bangahee. This is where I plant ideas, learn by building, and watch small projects take root.</p>
+            <a class="text-link" href="https://github.com/bangahee?tab=repositories">Explore the garden <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="notes-details">
+            <div class="note-row"><span class="note-number">i.</span><div><h3>On the workbench</h3><p>Experiments, useful tools, and things I’m figuring out.</p></div></div>
+            <div class="note-row"><span class="note-number">ii.</span><div><h3>In the garden shed</h3><ul class="tools" aria-label="Tools I use"><li>Python</li><li>JavaScript</li><li>Shell</li><li>Docker</li></ul></div></div>
+            <div class="note-row"><span class="note-number">iii.</span><div><h3>A little reminder</h3><p>Progress can be quiet and still be progress.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="resident" aria-labelledby="resident-title">
+        <div class="resident-art"><picture><source media="(prefers-reduced-motion: reduce)" srcset="pond-banner.png"><img src="koi/koi.gif" alt="The resident koi, shaped by my public GitHub activity" width="256" height="256" loading="lazy"></picture></div>
+        <div class="resident-copy"><p class="eyebrow">MEET THE RESIDENT</p><h2 id="resident-title">A koi with a story.</h2><p>This koi grows alongside my GitHub activity. Languages give it color, contributions help it grow, and streaks leave their marks.</p><p class="small-note">Come back another day. It might have a different story to tell.</p><a class="credit-link" href="https://github.com/yalongwastaken/git-koi">Refreshed daily · Made with git-koi <span aria-hidden="true">↗</span></a></div>
+      </section>
+
+      <section class="closing" aria-label="A small reminder"><span class="closing-ornament" aria-hidden="true">✧</span><p>Plant an idea.<br>Give it time.<br><em>Watch it grow.</em></p><a class="text-link" href="https://github.com/bangahee">Find me on GitHub <span aria-hidden="true">↗</span></a></section>
+    </main>
+
+    <footer class="site-footer"><p>小さな庭 <span aria-hidden="true">·</span> bangahee’s little garden</p><p>Thanks for stopping by. Take a breath.</p></footer>
+  </div>
+  <button id="breeze-toggle" class="breeze-toggle" type="button" hidden aria-pressed="true"><span aria-hidden="true">🍁</span><span id="breeze-label">Pause leaves</span></button>
+  <canvas id="maple-layer" aria-hidden="true"></canvas>
+</body>
+</html>
