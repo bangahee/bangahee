@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="36" viewBox="0 0 560 36" role="img" aria-labelledby="title desc">
+  <title id="title">Plant an idea. Give it time. Watch it grow.</title>
+  <desc id="desc">A quiet garden closing in sage-green italic lettering with fine horizontal rules.</desc>
+  <style>
+    .words { fill: #526c55; }
+    .rule { stroke: #b8c6ae; stroke-width: .7; }
+    @media (prefers-color-scheme: dark) {
+      .words { fill: #b9cba6; }
+      .rule { stroke: #486044; }
+    }
+  </style>
+  <path class="rule" d="M72 18H110M450 18H488" />
+  <text class="words" x="280" y="23" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="14" font-style="italic">Plant an idea. Give it time. Watch it grow.</text>
+</svg>

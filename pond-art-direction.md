@@ -1,6 +1,6 @@
 # Living pond background
 
-Generated with the built-in image generation tool. The daily workflow renders the original git-koi animation over this background using render_pond.py.
+Legacy background generated with the built-in image generation tool, preserved as a previous design. The current daily workflow renders the iris cove with `render_cove.py`; see `pond-cove-art-direction.md`.
 
 ## Final prompt
 
