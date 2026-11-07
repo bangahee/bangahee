@@ -1,4 +1,11 @@
 <p align="center">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="pond-banner.png" />
+    <img src="banner/many-koi.gif" width="100%" alt="The original many-koi garden brought to life with swimming koi, flowing pond water and waterfall, expanding ripples, swaying foliage, and drifting maple leaves" />
+  </picture>
+</p>
+
+<p align="center">
   <img src="garden-title.svg" width="100%" alt="小さな庭 · bangahee's little garden. Small commits. Steady growth." />
 </p>
 
