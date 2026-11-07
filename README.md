@@ -24,7 +24,7 @@
   <a href="https://github.com/yalongwastaken/git-koi"><img src="links/git-koi-green.svg" width="32%" height="24" alt="🐟 Powered by git-koi" /></a>
   <br />
   <a href="https://bangahee.github.io/bangahee/">
-    <img src="garden-link-compact.svg" width="374" height="24" alt="🍁 Enter the little garden · maple leaves and all ↗" />
+    <img src="garden-link-compact.svg" width="312" height="20" alt="🍁 Enter the little garden · maple leaves and all ↗" />
   </a>
 </p>
 
